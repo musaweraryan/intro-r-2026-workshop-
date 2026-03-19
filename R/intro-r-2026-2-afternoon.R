@@ -48,9 +48,39 @@ survey2 <- survey |>
     )
   )
 
-survey3 <- survey2 |> 
-  select(os, os_family, distance_mi, commute_min, travel_mph)
-head(survey3)
+
+long_survey <- survey2 |> 
+  select(distance, commute_time) |> 
+  pivot_longer(
+    cols = c(distance, commute_time),
+    names_to = "num_text_var",
+    values_to = "numeric_text"
+  ) |> 
+  mutate(
+    numeric_text = str_to_lower(numeric_text)
+  ) |> 
+  pivot_wider(
+    names_from = num_text_var,
+    values_from = numeric_text
+  )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
