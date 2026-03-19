@@ -1,0 +1,69 @@
+---
+title: "R training"
+author: Musawer
+date: 03/18/2026
+format: html
+editor: visual
+---
+
+I'm learning R
+
+```{r}
+2
+3
+4
+5
+typeof(8.5)
+```
+
+```{r}
+"text string are fun"
+typeof("strings")
+```
+
+```{r}
+a <- c(1, 2, 3)
+a
+c("a","b","c")
+c(TRUE, FALSE)
+c(1,"two",3)
+```
+
+```{r}
+my_list <- list(numbers =(1,2,3), words = 
+```
+
+```{r}
+#| label; setup
+source("training_source.R")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
