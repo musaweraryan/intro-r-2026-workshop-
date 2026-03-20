@@ -1,7 +1,8 @@
 # load libraries
-library(tidyr,
-        dplyr,
-        lubridate)
+library(tidyr)
+library(dplyr)
+library (ggplot2)       
+library(lubridate)      
 
 clean_df <- readRDS("data/clean_data.rds")
 raw_detectors <- read.csv("data/raw/detectors.csv", stringsAsFactors = F)
@@ -35,10 +36,33 @@ stations_df <- clean_df |>
   
 sta_1059 <- stations_df |> 
   filter(stationid == 1059) |> 
+  right_join(starttime_seq, by = "starttime") |> 
   ggplot(aes(x = starttime, y = tot_volume)) +
-  geom_line() +
-  geom_point()
+  geom_line(color = "skyblue") +
+  geom_point(color = "darkblue") +
+  scale_x_datetime(
+    date_breaks = "1 day",
+    date_labels = "%Y-%m-%d",
+    guide = guide_axis(angle = 45)
+  ) +
+  xlab(NULL)
+  theme_bw()
 sta_1059
+
+
+
+starttime_seq <- seq(
+  from = ymd_hms("2026-02-01 00:00:00", tz = "US/Pacific"),
+  to = ymd_hms("2026-02-16 00:00:00", tz = "US/Pacific"),
+  by = "15 min"
+) |> 
+as.data.frame()
+colnames(starttime_seq) <- c("starttime")
+
+
+
+
+
 
 
 
