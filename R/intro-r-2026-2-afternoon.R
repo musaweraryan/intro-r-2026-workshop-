@@ -61,8 +61,10 @@ long_survey <- survey2 |>
   ) |> 
   pivot_wider(
     names_from = num_text_var,
-    values_from = numeric_text
-  )
+    values_from = numeric_text, names_repair = "mininmal"
+  ) |> 
+  select(-.rid)
+
 
 
 
